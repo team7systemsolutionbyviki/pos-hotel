@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Tokens - Default Dark Mode (Premium UI) */
+  --bg-gradient: radial-gradient(125% 125% at 50% 10%, #0d0f1d 0%, #05060b 100%);
+  --bg-color: #07080d;
+  --glass-bg: rgba(18, 22, 38, 0.6);
+  --glass-bg-hover: rgba(26, 31, 54, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-border-focused: rgba(99, 102, 241, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(20px);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --primary: #6366f1; /* Indigo */
+  --primary-rgb: 99, 102, 241;
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  --primary-glow: rgba(99, 102, 241, 0.35);
+
+  --accent: #10b981; /* Emerald/Green Cash */
+  --accent-rgb: 16, 185, 129;
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --accent-glow: rgba(16, 185, 129, 0.3);
+
+  --secondary: #ec4899; /* Pink */
+  --secondary-gradient: linear-gradient(135deg, #ec4899 0%, #d946ef 100%);
+  
+  --warning: #f59e0b; /* Amber */
+  --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  
+  --danger: #ef4444; /* Red */
+  --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  
+  --success: #10b981;
+  --info: #06b6d4;
+  
+  --font-display: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 30px;
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme Variables Override */
+body.light-theme {
+  --bg-gradient: radial-gradient(125% 125% at 50% 10%, #f1f5f9 0%, #cbd5e1 100%);
+  --bg-color: #cbd5e1;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-focused: rgba(79, 70, 229, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --glass-blur: blur(20px);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --primary: #4f46e5;
+  --primary-rgb: 79, 70, 229;
+  --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+  --primary-glow: rgba(79, 70, 229, 0.2);
+
+  --accent: #059669;
+  --accent-rgb: 5, 150, 105;
+  --accent-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --accent-glow: rgba(5, 150, 105, 0.2);
+
+  --secondary: #db2777;
+  --secondary-gradient: linear-gradient(135deg, #db2777 0%, #c084fc 100%);
+  
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+/* Global Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none; /* Smooth POS feel */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--transition-normal), color var(--transition-normal);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-sm);
+}
+body.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: #fff;
+}

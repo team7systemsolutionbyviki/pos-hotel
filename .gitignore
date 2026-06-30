@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+
+# Local configuration and system files
+.DS_Store
+*.local
+.gemini/
+.env

@@ -6,7 +6,6 @@
   <title>Resot Kitchen - Food Shop POS</title>
   
   <!-- PWA Support Details -->
-  <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
   <link rel="apple-touch-icon" href="icon.svg">
   <meta name="theme-color" content="#6366f1">
@@ -138,7 +137,10 @@
         </a>
       </nav>
 
-      <div class="sidebar-footer">
+      <div class="sidebar-footer" style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn btn-primary" style="width:100%; gap:8px; display:none;" id="pwa-install-btn">
+          <i class="material-icons">download</i> <span>Install App</span>
+        </button>
         <button class="btn btn-outline" style="width:100%; gap:8px;" id="sidebar-logout-btn">
           <i class="material-icons">logout</i> <span>Logout</span>
         </button>
@@ -1236,15 +1238,6 @@
   <!-- Master JavaScript Application -->
   <script type="module" src="src/js/app.js"></script>
   
-  <!-- PWA Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then((reg) => console.log('Service Worker registered successfully:', reg.scope))
-          .catch((err) => console.warn('Service Worker registration failed:', err));
-      });
-    }
-  </script>
+  <!-- Service worker registration handled automatically by build plugin -->
 </body>
 </html>

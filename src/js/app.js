@@ -33,7 +33,8 @@ class ApplicationCoordinator {
       shopSidebarTitle: document.getElementById('shop-sidebar-title'),
       userAvatar: document.getElementById('user-avatar-initials'),
       userDisplayName: document.getElementById('user-display-name'),
-      userDisplayRole: document.getElementById('user-display-role')
+      userDisplayRole: document.getElementById('user-display-role'),
+      pwaInstallBtn: document.getElementById('pwa-install-btn')
     };
   }
 
@@ -157,6 +158,35 @@ class ApplicationCoordinator {
         }
       });
     }
+
+    // PWA Install Prompt Event Handlers
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (this.dom.pwaInstallBtn) {
+        this.dom.pwaInstallBtn.style.display = 'flex';
+      }
+    });
+
+    if (this.dom.pwaInstallBtn) {
+      this.dom.pwaInstallBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User choice outcome: ${outcome}`);
+        deferredPrompt = null;
+        this.dom.pwaInstallBtn.style.display = 'none';
+      });
+    }
+
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('App was successfully installed.');
+      if (this.dom.pwaInstallBtn) {
+        this.dom.pwaInstallBtn.style.display = 'none';
+      }
+      toast.success('Thank you for installing Resot Kitchen POS!', 'App Installed');
+    });
   }
 
   checkSession() {
